@@ -1,0 +1,75 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 15-10-2019 a las 06:41:06
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `pokemons-lentini-alejandro`
+--
+CREATE DATABASE IF NOT EXISTS `pokemons-lentini-alejandro` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `pokemons-lentini-alejandro`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pokemon`
+--
+
+DROP TABLE IF EXISTS `pokemon`;
+CREATE TABLE IF NOT EXISTS `pokemon` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `numero` text COLLATE utf8_spanish_ci NOT NULL,
+  `tipo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Un_nombre` (`nombre`),
+  UNIQUE KEY `Un_numero` (`numero`) USING HASH
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pokemon`
+--
+
+INSERT INTO `pokemon` (`id`, `nombre`, `numero`, `tipo`, `imagen`) VALUES
+(7, 'Bulbasaur', '001', 'Planta', 'recursos/imagenes/001.png'),
+(10, 'Ivysaur', '002', 'Planta', 'recursos/imagenes/002.png'),
+(15, 'Charmeleon', '005', 'Fuego', 'recursos/imagenes/005.png'),
+(17, 'Charmander', '004', 'Fuego', 'recursos/imagenes/004.png'),
+(19, 'Charizard', '006', 'Fuego', 'recursos/imagenes/006.png'),
+(22, 'Venusaur', '003', 'Planta', 'recursos/imagenes/003.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Un_usuario` (`usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `usuario`, `email`, `password`) VALUES
+(1, 'jose', 'jose@perez.com', '12345'),
+(2, 'pepe', 'pepe@gmail.com', 'pepe123'),
+(3, 'juan', 'a@b.com', '998877');
+COMMIT;
